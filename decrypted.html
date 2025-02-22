@@ -1,0 +1,310 @@
+<script>document.write(unescape('<html lang="en" class="swal2-shown swal2-height-auto">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
+    <title>Generator Lua &amp; Manifest</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .log-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #3b3d4e93;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+            max-width: 600px;
+            min-height: 300px;
+            box-sizing: border-box;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .log-entry {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+        .custom-input,
+        .custom-button {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #555555;
+        }
+
+        .custom-button {
+            cursor: pointer;
+        }
+
+        .custom-button:hover {
+            background-color: #444444;
+        }
+
+        .custom-button:disabled {
+            background-color: #555555;
+            color: #aaaaaa;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .social-icons {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            margin-right: 15px;
+            color: #ffffff;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #1da1f2;
+        }
+        
+        .swal2-popup {
+            background-color: #222222 !important;
+            color: #ffffff !important;
+        }
+
+        .swal2-title {
+            color: #ffffff !important;
+        }
+
+        .swal2-content {
+            color: #cccccc !important;
+        }
+
+        .swal2-confirm {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+            border: none !important;
+        }
+
+        .swal2-confirm:hover {
+            background-color: #444444 !important;
+        }
+
+        .swal2-icon {
+            color: #ffffff !important;
+        }
+
+        .swal2-icon.swal2-info {
+            border-color: #555555 !important;
+        }
+
+        #user-count {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" autoplay loop>
+        <source src="music/song.mp3" type="audio/mpeg">
+        Browser-ul tu nu suport redarea audio.
+    </audio>
+
+    <script>
+        // Obine elementul audio
+        const audio = document.getElementById('background-music');
+        
+        // Previne interaciunea utilizatorilor cu player-ul
+        audio.controls = false;
+
+        // Dezactiveaz opiunea de oprire prin script
+        audio.addEventListener('pause', function() {
+            audio.play(); // Repornete automat melodia dac utilizatorul �ncearc s o opreasc
+        });
+
+        // Seteaz volumul la nivelul dorit
+        audio.volume = 1.0;
+    </script>
+</body>
+<body class="swal2-shown swal2-height-auto">
+    <header aria-hidden="true">
+        <nav>
+            <div class="header_logo">
+                <img src="images/logo.png" alt="">
+            </div>
+        </nav>
+    </header>
+    
+    <div id="user-count">
+        Active Users: <span id="active-users">0</span>
+    </div>
+    <section class="main" aria-hidden="true">
+        <span>Manifest &amp; Lua Generator</span>
+        <p>
+            Bugs or questions? Feel free to <a href="https://discord.gg/steamtools" style="color: red; text-decoration: none;" target="_blank">contact us</a>.
+        </p>
+        <p>
+            U want to report an appid that isnt available? Feel free to <a href="https://cysaw.top/bug.html" style="color: red; text-decoration: none;" target="_blank">report it</a>.
+
+                <!-- Page content -->
+    <ul>
+        <li><a href="gamelist.html" style="color: #ffffff; text-decoration: none;">Game List</a>
+    </ul>
+        <div style="margin-top: 20px; display: flex">
+            <input type="text" placeholder="Enter your APP ID / URL here." class="custom-input" style="padding: 10px; border: 1px solid transparent; border-radius: 5px; font-size: 16px; width: 65%; box-sizing: border-box; margin-right: 10px;">
+            <button id="submit-button" class="custom-button" style="padding: 10px 20px; border: none; color: white; border-radius: 5px; width: 30%;" onclick="handleInput()">Submit</button>
+        </div>
+        <div id="log-container" class="log-container"></div>
+        </section>
+    <script aria-hidden="true">
+    // >:070BL 48A:;59<5@ ?@8 703@C7:5 AB@0=8FK
+    document.addEventListener("DOMContentLoaded", function () {
+        Swal.fire({
+            title: 'Disclaimer',
+            html: `
+                <div style="text-align: left; font-size: 16px; line-height: 1.5;">
+                    <strong>English:</strong><br>
+                    This website is for <strong style="color: red;">informational purposes</strong> only. We are not responsible for any <strong style="color: red;">consequences</strong> that may arise from using the provided information.
+                    <br><br>
+                    <strong>WARNING!</strong><br>
+                    If you see someone claiming to be me anywhere on other social media, THAT'S NOT ME! They are likely trying to SCAM you.<br>
+                    For your safety, do not deal with these people.
+                </div>
+            `,
+            icon: 'info',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#444444'
+        });
+    });
+
+
+    async function handleInput() {
+    const input = document.querySelector(".custom-input").value.trim();
+    const logContainer = document.getElementById("log-container");
+    const submitButton = document.getElementById("submit-button");
+
+    function extractAppId(input) {
+        if (/^\d+$/.test(input)) return input;
+        const match = input.match(/(?:app\/|agecheck\/app\/)(\d+)/);
+        return match ? match[1] : null;
+    }
+
+    function getCurrentTimestamp() {
+        const now = new Date();
+        return now.toLocaleString();
+    }
+
+    function addLog(message, type = "Information") {
+        const logEntry = document.createElement("div");
+        logEntry.className = "log-entry";
+        logEntry.textContent = `${getCurrentTimestamp()} [ ${type} ] ${message}`;
+        logContainer.appendChild(logEntry);
+        logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    async function checkFileExists(appId) {
+    const fileUrl = `https://cysawishere.rf.gd/uploads?file=${appId}.zip`;
+
+    try {
+        const response = await fetch(fileUrl, { method: "HEAD", mode: "no-cors" });
+        console.log("File check successful (using no-cors mode).");
+        return true;
+    } catch (error) {
+        console.error("Error during fetch:", error.message);
+        return false;
+    }
+}
+
+
+    submitButton.disabled = true;
+
+    const appId = extractAppId(input);
+
+    if (!appId) {
+        addLog("Invalid URL or APP ID.", "Error");
+        submitButton.disabled = false;
+        return;
+    }
+
+    addLog(`Extracted APP ID: ${appId}`, "Information");
+
+    // Adaug un delay de 5 secunde
+    setTimeout(async () => {
+        const fileExists = await checkFileExists(appId);
+
+        //if (!fileExists) {
+           // addLog(`File for APP ID ${appId} does not exist.`, "Error");
+            //submitButton.disabled = false;
+            //return;
+        //}
+
+        addLog(`File for APP ID ${appId} exists. Proceeding...`, "Success");
+
+        const destinationUrl = `https://cysawishere.rf.gd/uploads/${appId}.zip`;
+        const shrinkMeApiUrl = `https://shrinkme.io/api?api=65e3a28b548f37003a66ab5eae92493358f573e1&url=${encodeURIComponent(destinationUrl)}`;
+
+        try {
+            const response = await fetch(shrinkMeApiUrl);
+            const data = await response.json();
+
+            if (data.status === "success") {
+                // Deschide link-ul �ntr-o fil nou folosind `window.open`
+                window.open(data.shortenedUrl, "_blank", "noopener,noreferrer");
+
+                addLog("Link has been opened in a new tab.", "Success");
+            } else {
+                addLog("Failed to generate the short link.", "Error");
+            }
+        } catch (error) {
+            console.error("Detailed error:", error);
+            addLog("Error while processing request. Details in console.", "Error");
+        } finally {
+            submitButton.disabled = false;
+        }
+    }, 5000); // Delay de 5 secunde
+}
+
+
+
+
+
+
+
+
+        async function fetchActiveUsers() {
+    try {
+        const response = await fetch('active_users.php'); // Asigur-te c acest fiier este pe server
+        if (!response.ok) throw new Error('Failed to fetch active users');
+
+        const data = await response.json();
+        document.getElementById('active-users').textContent = data.activeUsers;
+    } catch (error) {
+        console.error('Error fetching active users:', error);
+    }
+}
+
+// Actualizeaz numrul de utilizatori la fiecare 5 secunde
+setInterval(fetchActiveUsers, 5000);
+fetchActiveUsers();
+
+
+    </script>
+
+
+<div class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;"><div aria-labelledby="swal2-title" aria-describedby="swal2-html-container" class="swal2-popup swal2-modal swal2-icon-info swal2-show" tabindex="-1" role="dialog" aria-live="assertive" aria-modal="true" style="display: grid;"><button type="button" class="swal2-close" aria-label="Close this dialog" style="display: none;">�</button><ul class="swal2-progress-steps" style="display: none;"></ul><div class="swal2-icon swal2-info swal2-icon-show" style="display: flex;"><div class="swal2-icon-content">i</div></div><img class="swal2-image" style="display: none;"><h2 class="swal2-title" id="swal2-title" style="display: block;">Disclaimer</h2><div class="swal2-html-container" id="swal2-html-container" style="display: block;"><div style="text-align: left;">
+                        <strong>English:</strong><br>
+                        This website is for <strong style="color: red;">informational purposes</strong> only. We are not responsible for any <strong style="color: red;">consequences</strong> that may arise from using the provided information.
+                    </div>
+                </div><input id="swal2-input" class="swal2-input" style="display: none;"><input type="file" class="swal2-file" style="display: none;"><div class="swal2-range" style="display: none;"><input type="range"><output></output></div><select id="swal2-select" class="swal2-select" style="display: none;"></select><div class="swal2-radio" style="display: none;"></div><label class="swal2-checkbox" style="display: none;"><input type="checkbox" id="swal2-checkbox"><span class="swal2-label"></span></label><textarea id="swal2-textarea" class="swal2-textarea" style="display: none;"></textarea><div class="swal2-validation-message" id="swal2-validation-message" style="display: none;"></div><div class="swal2-actions" style="display: flex;"><div class="swal2-loader"></div><button type="button" class="swal2-confirm swal2-styled swal2-default-outline" aria-label="" style="display: inline-block; background-color: rgb(68, 68, 68);">OK</button><button type="button" class="swal2-deny swal2-styled" aria-label="" style="display: none;">No</button><button type="button" class="swal2-cancel swal2-styled" aria-label="" style="display: none;">Cancel</button></div><div class="swal2-footer" style="display: none;"></div><div class="swal2-timer-progress-bar-container"><div class="swal2-timer-progress-bar" style="display: none;"></div></div></div></div></body></html>
+'))</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'900f457e6bd6ef8e',t:'MTczNjcwNzE4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
